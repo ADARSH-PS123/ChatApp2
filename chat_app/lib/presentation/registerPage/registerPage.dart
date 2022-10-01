@@ -1,8 +1,10 @@
-import 'package:chat_app/application/signInBloc/sign_in_bloc.dart';
+import 'package:chat_app/application/RegBloc/register_bloc.dart';
+
 import 'package:chat_app/presentation/core/colors.dart';
 import 'package:chat_app/presentation/core/spaces.dart';
-import 'package:chat_app/presentation/registerPage/registerPage.dart';
-import 'package:chat_app/presentation/mainPage/mainPage.dart';
+
+
+import 'package:chat_app/presentation/verifyPage/verifyPage.dart';
 
 import 'package:chat_app/presentation/widgetsCommon/buttons.dart';
 import 'package:chat_app/presentation/widgetsCommon/customTextField.dart';
@@ -11,58 +13,60 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
-class AuthScreen extends StatelessWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+class RegScreen extends StatelessWidget {
+  RegScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    return Scaffold(
-      body: BlocConsumer<SignInBloc, SignInState>(
-        listener: (context, state) {
-          state.optionSucessOrFailure.fold(
-              () => null,
-              (either) => either.fold((l) async {
-                    String errorMessage = state.optionSucessOrFailure.fold(
-                        () => "null",
-                        (either) =>
-                            either.fold((l) => l.toString().replaceRange(0, 19, "").replaceAll("()", ""), (r) => "Success"));
-    
-              showSnackBar(context,  duration: Duration(seconds: 3), message: errorMessage);
-                  }, (r) {
-                  
-                   
-                
-                    emailController.clear();
-                    passwordController.clear();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage()));
-                    
-                  }));
-        },
-        builder: (context, state) {
-      
-          if (state.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return InputPage(
-              email: state.email,
-              emailController: emailController,
-              passwordController: passwordController,
-              password: state.password, buttonText1: 'log in', buttonText2: 'new member ? ',
-            );
-          }
-        },
-      ),
+    return BlocConsumer<RegisterBloc, RegisterState>(
+      listener: (context, state) {
+        state.optionSucessOrFailure.fold(
+            () => null,
+            (either) => either.fold((l) async {
+                  String errorMessage = state.optionSucessOrFailure.fold(
+                      () => "null",
+                      (either) => either.fold((l) {
+                            if (l.toString().length <= 24) {
+                        return "network error";
+                            }
+                            return l
+                                .toString()
+                                .replaceRange(0, 19, "")
+                                .replaceAll("()", "");
+                          }, (r) => "Success"));
+
+                  showSnackBar(context,
+                      message: errorMessage, duration: Duration(seconds: 3));
+                }, (r) {}));
+
+        if (state.isVerifying) {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => PageVerify()));
+        }
+      },
+      builder: (context, state) {
+        if (state.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return InputPageRegister(
+            email: state.email,
+            emailController: emailController,
+            passwordController: passwordController,
+            password: state.password,
+            buttonText1: 'log in',
+            buttonText2: 'add account',
+          );
+        }
+      },
     );
   }
 }
 
-class InputPage extends StatelessWidget {
+class InputPageRegister extends StatelessWidget {
   TextEditingController? emailController;
   TextEditingController? passwordController;
   String buttonText1;
@@ -70,8 +74,10 @@ class InputPage extends StatelessWidget {
   String email;
   String password;
 
-  InputPage(
-      {Key? key,required this.buttonText1,required this.buttonText2,
+  InputPageRegister(
+      {Key? key,
+      required this.buttonText1,
+      required this.buttonText2,
       required this.email,
       required this.password,
       this.emailController,
@@ -79,14 +85,14 @@ class InputPage extends StatelessWidget {
       : super(key: key);
 
   @override
-  final _formKey1 = GlobalKey<FormState>();
+  final _formKey2 = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: backgroundColor,
         body: Center(
           child: SingleChildScrollView(
             child: Form(
-              key: _formKey1,
+              key: _formKey2,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -130,14 +136,8 @@ class InputPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: (){
-                             if (_formKey1.currentState!.validate()) {
-                        BlocProvider.of<SignInBloc>(context).add(
-                              SignInEvent.logIn(
-                                  email: emailController!.text,
-                                  password: passwordController!.text));
-                         
-                        }
+                          onTap: () {
+                            Navigator.pop(context);
                           },
                           child: buttons(
                               height: 40.0,
@@ -153,16 +153,22 @@ class InputPage extends StatelessWidget {
                           width: 15.w,
                         ),
                         GestureDetector(
-                          onTap: (){emailController!.clear();
-                          passwordController!.clear();
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>RegScreen()));},
+                          onTap: () {
+                            if (_formKey2.currentState!.validate()) {
+                              BlocProvider.of<RegisterBloc>(context).add(
+                                  RegisterEvent.register(
+                                      email: emailController!.text,
+                                      password: passwordController!.text));
+                            }
+                          },
                           child: buttons(
                               height: 40.0,
                               color: Colors.blue,
                               width: 117.5.w,
                               widget: Text(
-                              buttonText2,
-                                style: TextStyle(color: textColor, fontSize: 15),
+                                buttonText2,
+                                style:
+                                    TextStyle(color: textColor, fontSize: 15),
                               )),
                         )
                       ],
@@ -173,4 +179,3 @@ class InputPage extends StatelessWidget {
         ));
   }
 }
-

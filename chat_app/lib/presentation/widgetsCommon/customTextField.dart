@@ -10,10 +10,15 @@ class CustomTextField extends StatelessWidget {
   final IconData? icon;
   final double width;
   final double padding;
+  final Key ?textFormKey;
+  final TextEditingController ?controller;
+  String? Function(String?)? validator;
+  String ? Function(String)? onchanged;
+  String ? errorText;
 
   CustomTextField(
-      {Key? key,
-      required this.hintText,
+      {Key? key,this.controller,
+      required this.hintText,this.textFormKey,this.validator,this.errorText,this.onchanged,
       required this.isSuffixWidget,
       this.icon,
       required this.padding,
@@ -26,10 +31,16 @@ class CustomTextField extends StatelessWidget {
         children: [
           SizedBox(
             width: isSuffixWidget ? (width - 40) : width,
-            height: 40,
+            //height: 40,
             child: TextFormField(
+              controller: controller,
+              style: TextStyle(color: textColor),
+          onChanged: onchanged,
+              validator: validator,
+              key: textFormKey,
                 decoration: InputDecoration(
-              fillColor: textFieldInnerColor,
+           
+              fillColor: textFieldInnerColor,errorText:errorText ,
               filled: true,
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.r),
@@ -49,7 +60,7 @@ class CustomTextField extends StatelessWidget {
                     color: textColor,
                     size: 18,
                   ))
-              : SizedBox()
+              : const SizedBox()
         ],
       );
     
