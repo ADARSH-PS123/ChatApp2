@@ -1,13 +1,16 @@
 import 'package:chat_app/application/RegBloc/register_bloc.dart';
+import 'package:chat_app/application/mainScreenBloc/main_screen_bloc.dart';
 import 'package:chat_app/application/signInBloc/sign_in_bloc.dart';
 import 'package:chat_app/application/verifyBloc/verify_bloc.dart';
 import 'package:chat_app/core/appCore.dart';
 import 'package:chat_app/presentation/core/colors.dart';
 import 'package:chat_app/presentation/logInScreen.dart/loginScreen.dart';
+import 'package:chat_app/presentation/mainPage/mainPage.dart';
 
 import 'package:chat_app/presentation/registerPage/registerPage.dart';
 
 import 'package:chat_app/presentation/web/logInScreen/logInScreen.dart';
+import 'package:chat_app/presentation/web/mainPage/mainPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
@@ -27,8 +30,9 @@ void main() async {
             appId: appId,
             messagingSenderId: messagingSenderId,
             projectId: projectId));
+  } else {
+    await Firebase.initializeApp();
   }
-  else{  await Firebase.initializeApp();}
 
   runApp(const MyApp());
 }
@@ -38,8 +42,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => getIt<MainScreenBloc>()),
         BlocProvider(create: (context) => getIt<RegisterBloc>()),
         BlocProvider(create: (context) => getIt<SignInBloc>()),
         BlocProvider(create: (context) => getIt<VerifyBloc>()),
@@ -54,13 +60,20 @@ class MyApp extends StatelessWidget {
                   primaryTextTheme: TextTheme()
                       .apply(bodyColor: textColor, displayColor: textColor)),
               debugShowCheckedModeBanner: false,
-              home: SafeArea(
-                  child: LayoutBuilder(builder: (context, constraints) {
-                return Scaffold(
-                    body: constraints.constrainWidth() < 600
-                        ? AuthScreen()
-                        : WebLogInScreen());
-              })),
+              home: BlocBuilder<SignInBloc, SignInState>(
+                builder: (context, state) {
+                  print(state
+                  .isLoggedIn);
+                  BlocProvider.of<SignInBloc>(context).add(const SignInEvent.prefGetUser());
+                  return SafeArea(
+                      child: LayoutBuilder(builder: (context, constraints) {
+                    return Scaffold(
+                        body: constraints.constrainWidth() < 600
+                            ? (state.isLoggedIn? MainPage(uid: state.uid,) :AuthScreen())
+                            : (state.isLoggedIn?WebMainPage(uid: state.uid,): WebLogInScreen()));
+                  }));
+                },
+              ),
             )),
       ),
     );

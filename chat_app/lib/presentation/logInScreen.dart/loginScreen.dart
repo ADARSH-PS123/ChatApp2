@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
 
@@ -28,22 +26,22 @@ class AuthScreen extends StatelessWidget {
               (either) => either.fold((l) async {
                     String errorMessage = state.optionSucessOrFailure.fold(
                         () => "null",
-                        (either) =>
-                            either.fold((l) => l.toString().replaceRange(0, 19, "").replaceAll("()", ""), (r) => "Success"));
-    
-              showSnackBar(context,  duration: Duration(seconds: 3), message: errorMessage);
+                        (either) => either.fold(
+                            (l) => l
+                                .toString()
+                                .replaceRange(0, 19, "")
+                                .replaceAll("()", ""),
+                            (r) => "Success"));
+
+                    showSnackBar(context,
+                        duration: Duration(seconds: 3), message: errorMessage);
                   }, (r) {
-                  
-                   
-                
                     emailController.clear();
                     passwordController.clear();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainPage()));
-                    
+                 
                   }));
         },
         builder: (context, state) {
-      
           if (state.isLoading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -53,7 +51,9 @@ class AuthScreen extends StatelessWidget {
               email: state.email,
               emailController: emailController,
               passwordController: passwordController,
-              password: state.password, buttonText1: 'log in', buttonText2: 'new member ? ',
+              password: state.password,
+              buttonText1: 'log in',
+              buttonText2: 'new member ? ',
             );
           }
         },
@@ -71,7 +71,9 @@ class InputPage extends StatelessWidget {
   String password;
 
   InputPage(
-      {Key? key,required this.buttonText1,required this.buttonText2,
+      {Key? key,
+      required this.buttonText1,
+      required this.buttonText2,
       required this.email,
       required this.password,
       this.emailController,
@@ -130,14 +132,13 @@ class InputPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: (){
-                             if (_formKey1.currentState!.validate()) {
-                        BlocProvider.of<SignInBloc>(context).add(
-                              SignInEvent.logIn(
-                                  email: emailController!.text,
-                                  password: passwordController!.text));
-                         
-                        }
+                          onTap: () {
+                            if (_formKey1.currentState!.validate()) {
+                              BlocProvider.of<SignInBloc>(context).add(
+                                  SignInEvent.logIn(
+                                      email: emailController!.text,
+                                      password: passwordController!.text));
+                            }
                           },
                           child: buttons(
                               height: 40.0,
@@ -153,16 +154,22 @@ class InputPage extends StatelessWidget {
                           width: 15.w,
                         ),
                         GestureDetector(
-                          onTap: (){emailController!.clear();
-                          passwordController!.clear();
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>RegScreen()));},
+                          onTap: () {
+                            emailController!.clear();
+                            passwordController!.clear();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegScreen()));
+                          },
                           child: buttons(
                               height: 40.0,
                               color: Colors.blue,
                               width: 117.5.w,
                               widget: Text(
-                              buttonText2,
-                                style: TextStyle(color: textColor, fontSize: 15),
+                                buttonText2,
+                                style:
+                                    TextStyle(color: textColor, fontSize: 15),
                               )),
                         )
                       ],
@@ -173,4 +180,3 @@ class InputPage extends StatelessWidget {
         ));
   }
 }
-

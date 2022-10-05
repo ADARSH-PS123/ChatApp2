@@ -28,6 +28,7 @@ mixin _$Failure {
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +43,7 @@ mixin _$Failure {
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +58,7 @@ mixin _$Failure {
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +82,8 @@ mixin _$Failure {
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +101,7 @@ mixin _$Failure {
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,6 +119,7 @@ mixin _$Failure {
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,6 +200,7 @@ class _$_UserDisabledFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureUserDisabled();
   }
@@ -210,6 +218,7 @@ class _$_UserDisabledFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureUserDisabled?.call();
   }
@@ -227,6 +236,7 @@ class _$_UserDisabledFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureUserDisabled != null) {
@@ -256,6 +266,8 @@ class _$_UserDisabledFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureUserDisabled(this);
   }
@@ -276,6 +288,7 @@ class _$_UserDisabledFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureUserDisabled?.call(this);
   }
@@ -296,6 +309,7 @@ class _$_UserDisabledFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureUserDisabled != null) {
@@ -369,6 +383,7 @@ class _$_UserNotFoundFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureUserNotfound();
   }
@@ -386,6 +401,7 @@ class _$_UserNotFoundFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureUserNotfound?.call();
   }
@@ -403,6 +419,7 @@ class _$_UserNotFoundFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureUserNotfound != null) {
@@ -432,6 +449,8 @@ class _$_UserNotFoundFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureUserNotfound(this);
   }
@@ -452,6 +471,7 @@ class _$_UserNotFoundFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureUserNotfound?.call(this);
   }
@@ -472,6 +492,7 @@ class _$_UserNotFoundFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureUserNotfound != null) {
@@ -545,6 +566,7 @@ class _$_WrongPasswordFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureWrongPassword();
   }
@@ -562,6 +584,7 @@ class _$_WrongPasswordFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureWrongPassword?.call();
   }
@@ -579,6 +602,7 @@ class _$_WrongPasswordFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureWrongPassword != null) {
@@ -608,6 +632,8 @@ class _$_WrongPasswordFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureWrongPassword(this);
   }
@@ -628,6 +654,7 @@ class _$_WrongPasswordFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureWrongPassword?.call(this);
   }
@@ -648,6 +675,7 @@ class _$_WrongPasswordFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureWrongPassword != null) {
@@ -722,6 +750,7 @@ class _$_TooManyRequestFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureTooMantRequests();
   }
@@ -739,6 +768,7 @@ class _$_TooManyRequestFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureTooMantRequests?.call();
   }
@@ -756,6 +786,7 @@ class _$_TooManyRequestFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureTooMantRequests != null) {
@@ -785,6 +816,8 @@ class _$_TooManyRequestFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureTooMantRequests(this);
   }
@@ -805,6 +838,7 @@ class _$_TooManyRequestFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureTooMantRequests?.call(this);
   }
@@ -825,6 +859,7 @@ class _$_TooManyRequestFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureTooMantRequests != null) {
@@ -898,6 +933,7 @@ class _$_InvalidEmailFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureInvalidEmail();
   }
@@ -915,6 +951,7 @@ class _$_InvalidEmailFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureInvalidEmail?.call();
   }
@@ -932,6 +969,7 @@ class _$_InvalidEmailFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureInvalidEmail != null) {
@@ -961,6 +999,8 @@ class _$_InvalidEmailFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureInvalidEmail(this);
   }
@@ -981,6 +1021,7 @@ class _$_InvalidEmailFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureInvalidEmail?.call(this);
   }
@@ -1001,6 +1042,7 @@ class _$_InvalidEmailFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureInvalidEmail != null) {
@@ -1070,6 +1112,7 @@ class _$_ClientFailure with DiagnosticableTreeMixin implements _ClientFailure {
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return clinetFailure();
   }
@@ -1087,6 +1130,7 @@ class _$_ClientFailure with DiagnosticableTreeMixin implements _ClientFailure {
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return clinetFailure?.call();
   }
@@ -1104,6 +1148,7 @@ class _$_ClientFailure with DiagnosticableTreeMixin implements _ClientFailure {
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (clinetFailure != null) {
@@ -1133,6 +1178,8 @@ class _$_ClientFailure with DiagnosticableTreeMixin implements _ClientFailure {
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return clinetFailure(this);
   }
@@ -1153,6 +1200,7 @@ class _$_ClientFailure with DiagnosticableTreeMixin implements _ClientFailure {
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return clinetFailure?.call(this);
   }
@@ -1173,6 +1221,7 @@ class _$_ClientFailure with DiagnosticableTreeMixin implements _ClientFailure {
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (clinetFailure != null) {
@@ -1242,6 +1291,7 @@ class _$_ServerFailure with DiagnosticableTreeMixin implements _ServerFailure {
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return serverFailure();
   }
@@ -1259,6 +1309,7 @@ class _$_ServerFailure with DiagnosticableTreeMixin implements _ServerFailure {
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return serverFailure?.call();
   }
@@ -1276,6 +1327,7 @@ class _$_ServerFailure with DiagnosticableTreeMixin implements _ServerFailure {
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -1305,6 +1357,8 @@ class _$_ServerFailure with DiagnosticableTreeMixin implements _ServerFailure {
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return serverFailure(this);
   }
@@ -1325,6 +1379,7 @@ class _$_ServerFailure with DiagnosticableTreeMixin implements _ServerFailure {
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return serverFailure?.call(this);
   }
@@ -1345,6 +1400,7 @@ class _$_ServerFailure with DiagnosticableTreeMixin implements _ServerFailure {
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -1421,6 +1477,7 @@ class _$_EmailAlreadyInUseFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureEmailAlreadyInUse();
   }
@@ -1438,6 +1495,7 @@ class _$_EmailAlreadyInUseFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureEmailAlreadyInUse?.call();
   }
@@ -1455,6 +1513,7 @@ class _$_EmailAlreadyInUseFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureEmailAlreadyInUse != null) {
@@ -1484,6 +1543,8 @@ class _$_EmailAlreadyInUseFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureEmailAlreadyInUse(this);
   }
@@ -1504,6 +1565,7 @@ class _$_EmailAlreadyInUseFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureEmailAlreadyInUse?.call(this);
   }
@@ -1524,6 +1586,7 @@ class _$_EmailAlreadyInUseFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureEmailAlreadyInUse != null) {
@@ -1601,6 +1664,7 @@ class _$_WeakPasswordFailureFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureWeakPassword();
   }
@@ -1618,6 +1682,7 @@ class _$_WeakPasswordFailureFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureWeakPassword?.call();
   }
@@ -1635,6 +1700,7 @@ class _$_WeakPasswordFailureFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureWeakPassword != null) {
@@ -1664,6 +1730,8 @@ class _$_WeakPasswordFailureFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureWeakPassword(this);
   }
@@ -1684,6 +1752,7 @@ class _$_WeakPasswordFailureFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureWeakPassword?.call(this);
   }
@@ -1704,6 +1773,7 @@ class _$_WeakPasswordFailureFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureWeakPassword != null) {
@@ -1781,6 +1851,7 @@ class _$_AnonimousAccountDisabledFailure
     required TResult Function() AuthFailureEmailAlreadyInUse,
     required TResult Function() AuthFailureWeakPassword,
     required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
   }) {
     return AuthFailureAnonimousAccountDisabled();
   }
@@ -1798,6 +1869,7 @@ class _$_AnonimousAccountDisabledFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
   }) {
     return AuthFailureAnonimousAccountDisabled?.call();
   }
@@ -1815,6 +1887,7 @@ class _$_AnonimousAccountDisabledFailure
     TResult Function()? AuthFailureEmailAlreadyInUse,
     TResult Function()? AuthFailureWeakPassword,
     TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureAnonimousAccountDisabled != null) {
@@ -1844,6 +1917,8 @@ class _$_AnonimousAccountDisabledFailure
         AuthFailureWeakPassword,
     required TResult Function(_AnonimousAccountDisabledFailure value)
         AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
   }) {
     return AuthFailureAnonimousAccountDisabled(this);
   }
@@ -1864,6 +1939,7 @@ class _$_AnonimousAccountDisabledFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
   }) {
     return AuthFailureAnonimousAccountDisabled?.call(this);
   }
@@ -1884,6 +1960,7 @@ class _$_AnonimousAccountDisabledFailure
         AuthFailureWeakPassword,
     TResult Function(_AnonimousAccountDisabledFailure value)?
         AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
     required TResult orElse(),
   }) {
     if (AuthFailureAnonimousAccountDisabled != null) {
@@ -1896,4 +1973,189 @@ class _$_AnonimousAccountDisabledFailure
 abstract class _AnonimousAccountDisabledFailure implements Failure {
   const factory _AnonimousAccountDisabledFailure() =
       _$_AnonimousAccountDisabledFailure;
+}
+
+/// @nodoc
+abstract class _$$_FirebaseFirestoreFailureCopyWith<$Res> {
+  factory _$$_FirebaseFirestoreFailureCopyWith(
+          _$_FirebaseFirestoreFailure value,
+          $Res Function(_$_FirebaseFirestoreFailure) then) =
+      __$$_FirebaseFirestoreFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FirebaseFirestoreFailureCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res>
+    implements _$$_FirebaseFirestoreFailureCopyWith<$Res> {
+  __$$_FirebaseFirestoreFailureCopyWithImpl(_$_FirebaseFirestoreFailure _value,
+      $Res Function(_$_FirebaseFirestoreFailure) _then)
+      : super(_value, (v) => _then(v as _$_FirebaseFirestoreFailure));
+
+  @override
+  _$_FirebaseFirestoreFailure get _value =>
+      super._value as _$_FirebaseFirestoreFailure;
+}
+
+/// @nodoc
+
+class _$_FirebaseFirestoreFailure
+    with DiagnosticableTreeMixin
+    implements _FirebaseFirestoreFailure {
+  const _$_FirebaseFirestoreFailure();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Failure.FirebaseFirestore()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'Failure.FirebaseFirestore'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FirebaseFirestoreFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() AuthFailureUserDisabled,
+    required TResult Function() AuthFailureUserNotfound,
+    required TResult Function() AuthFailureWrongPassword,
+    required TResult Function() AuthFailureTooMantRequests,
+    required TResult Function() AuthFailureInvalidEmail,
+    required TResult Function() clinetFailure,
+    required TResult Function() serverFailure,
+    required TResult Function() AuthFailureEmailAlreadyInUse,
+    required TResult Function() AuthFailureWeakPassword,
+    required TResult Function() AuthFailureAnonimousAccountDisabled,
+    required TResult Function() FirebaseFirestore,
+  }) {
+    return FirebaseFirestore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? AuthFailureUserDisabled,
+    TResult Function()? AuthFailureUserNotfound,
+    TResult Function()? AuthFailureWrongPassword,
+    TResult Function()? AuthFailureTooMantRequests,
+    TResult Function()? AuthFailureInvalidEmail,
+    TResult Function()? clinetFailure,
+    TResult Function()? serverFailure,
+    TResult Function()? AuthFailureEmailAlreadyInUse,
+    TResult Function()? AuthFailureWeakPassword,
+    TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
+  }) {
+    return FirebaseFirestore?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? AuthFailureUserDisabled,
+    TResult Function()? AuthFailureUserNotfound,
+    TResult Function()? AuthFailureWrongPassword,
+    TResult Function()? AuthFailureTooMantRequests,
+    TResult Function()? AuthFailureInvalidEmail,
+    TResult Function()? clinetFailure,
+    TResult Function()? serverFailure,
+    TResult Function()? AuthFailureEmailAlreadyInUse,
+    TResult Function()? AuthFailureWeakPassword,
+    TResult Function()? AuthFailureAnonimousAccountDisabled,
+    TResult Function()? FirebaseFirestore,
+    required TResult orElse(),
+  }) {
+    if (FirebaseFirestore != null) {
+      return FirebaseFirestore();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserDisabledFailure value)
+        AuthFailureUserDisabled,
+    required TResult Function(_UserNotFoundFailure value)
+        AuthFailureUserNotfound,
+    required TResult Function(_WrongPasswordFailure value)
+        AuthFailureWrongPassword,
+    required TResult Function(_TooManyRequestFailure value)
+        AuthFailureTooMantRequests,
+    required TResult Function(_InvalidEmailFailure value)
+        AuthFailureInvalidEmail,
+    required TResult Function(_ClientFailure value) clinetFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_EmailAlreadyInUseFailure value)
+        AuthFailureEmailAlreadyInUse,
+    required TResult Function(_WeakPasswordFailureFailure value)
+        AuthFailureWeakPassword,
+    required TResult Function(_AnonimousAccountDisabledFailure value)
+        AuthFailureAnonimousAccountDisabled,
+    required TResult Function(_FirebaseFirestoreFailure value)
+        FirebaseFirestore,
+  }) {
+    return FirebaseFirestore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_UserDisabledFailure value)? AuthFailureUserDisabled,
+    TResult Function(_UserNotFoundFailure value)? AuthFailureUserNotfound,
+    TResult Function(_WrongPasswordFailure value)? AuthFailureWrongPassword,
+    TResult Function(_TooManyRequestFailure value)? AuthFailureTooMantRequests,
+    TResult Function(_InvalidEmailFailure value)? AuthFailureInvalidEmail,
+    TResult Function(_ClientFailure value)? clinetFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_EmailAlreadyInUseFailure value)?
+        AuthFailureEmailAlreadyInUse,
+    TResult Function(_WeakPasswordFailureFailure value)?
+        AuthFailureWeakPassword,
+    TResult Function(_AnonimousAccountDisabledFailure value)?
+        AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
+  }) {
+    return FirebaseFirestore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserDisabledFailure value)? AuthFailureUserDisabled,
+    TResult Function(_UserNotFoundFailure value)? AuthFailureUserNotfound,
+    TResult Function(_WrongPasswordFailure value)? AuthFailureWrongPassword,
+    TResult Function(_TooManyRequestFailure value)? AuthFailureTooMantRequests,
+    TResult Function(_InvalidEmailFailure value)? AuthFailureInvalidEmail,
+    TResult Function(_ClientFailure value)? clinetFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_EmailAlreadyInUseFailure value)?
+        AuthFailureEmailAlreadyInUse,
+    TResult Function(_WeakPasswordFailureFailure value)?
+        AuthFailureWeakPassword,
+    TResult Function(_AnonimousAccountDisabledFailure value)?
+        AuthFailureAnonimousAccountDisabled,
+    TResult Function(_FirebaseFirestoreFailure value)? FirebaseFirestore,
+    required TResult orElse(),
+  }) {
+    if (FirebaseFirestore != null) {
+      return FirebaseFirestore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FirebaseFirestoreFailure implements Failure {
+  const factory _FirebaseFirestoreFailure() = _$_FirebaseFirestoreFailure;
 }
