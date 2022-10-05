@@ -16,43 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInEvent {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) logIn,
+    required TResult Function() prefGetUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? logIn,
+    TResult Function()? prefGetUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? logIn,
+    TResult Function()? prefGetUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventLogIn value) logIn,
+    required TResult Function(_EventPrefGetUser value) prefGetUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventLogIn value)? logIn,
+    TResult Function(_EventPrefGetUser value)? prefGetUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventLogIn value)? logIn,
+    TResult Function(_EventPrefGetUser value)? prefGetUser,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SignInEventCopyWith<SignInEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,7 +61,6 @@ abstract class $SignInEventCopyWith<$Res> {
   factory $SignInEventCopyWith(
           SignInEvent value, $Res Function(SignInEvent) then) =
       _$SignInEventCopyWithImpl<$Res>;
-  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -71,32 +70,13 @@ class _$SignInEventCopyWithImpl<$Res> implements $SignInEventCopyWith<$Res> {
   final SignInEvent _value;
   // ignore: unused_field
   final $Res Function(SignInEvent) _then;
-
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
-  }) {
-    return _then(_value.copyWith(
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: password == freezed
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$$_EventLogInCopyWith<$Res>
-    implements $SignInEventCopyWith<$Res> {
+abstract class _$$_EventLogInCopyWith<$Res> {
   factory _$$_EventLogInCopyWith(
           _$_EventLogIn value, $Res Function(_$_EventLogIn) then) =
       __$$_EventLogInCopyWithImpl<$Res>;
-  @override
   $Res call({String email, String password});
 }
 
@@ -167,6 +147,7 @@ class _$_EventLogIn implements _EventLogIn {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) logIn,
+    required TResult Function() prefGetUser,
   }) {
     return logIn(email, password);
   }
@@ -175,6 +156,7 @@ class _$_EventLogIn implements _EventLogIn {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String email, String password)? logIn,
+    TResult Function()? prefGetUser,
   }) {
     return logIn?.call(email, password);
   }
@@ -183,6 +165,7 @@ class _$_EventLogIn implements _EventLogIn {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? logIn,
+    TResult Function()? prefGetUser,
     required TResult orElse(),
   }) {
     if (logIn != null) {
@@ -195,6 +178,7 @@ class _$_EventLogIn implements _EventLogIn {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EventLogIn value) logIn,
+    required TResult Function(_EventPrefGetUser value) prefGetUser,
   }) {
     return logIn(this);
   }
@@ -203,6 +187,7 @@ class _$_EventLogIn implements _EventLogIn {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventLogIn value)? logIn,
+    TResult Function(_EventPrefGetUser value)? prefGetUser,
   }) {
     return logIn?.call(this);
   }
@@ -211,6 +196,7 @@ class _$_EventLogIn implements _EventLogIn {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventLogIn value)? logIn,
+    TResult Function(_EventPrefGetUser value)? prefGetUser,
     required TResult orElse(),
   }) {
     if (logIn != null) {
@@ -225,19 +211,123 @@ abstract class _EventLogIn implements SignInEvent {
       {required final String email,
       required final String password}) = _$_EventLogIn;
 
-  @override
   String get email;
-  @override
   String get password;
-  @override
   @JsonKey(ignore: true)
   _$$_EventLogInCopyWith<_$_EventLogIn> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$_EventPrefGetUserCopyWith<$Res> {
+  factory _$$_EventPrefGetUserCopyWith(
+          _$_EventPrefGetUser value, $Res Function(_$_EventPrefGetUser) then) =
+      __$$_EventPrefGetUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_EventPrefGetUserCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res>
+    implements _$$_EventPrefGetUserCopyWith<$Res> {
+  __$$_EventPrefGetUserCopyWithImpl(
+      _$_EventPrefGetUser _value, $Res Function(_$_EventPrefGetUser) _then)
+      : super(_value, (v) => _then(v as _$_EventPrefGetUser));
+
+  @override
+  _$_EventPrefGetUser get _value => super._value as _$_EventPrefGetUser;
+}
+
+/// @nodoc
+
+class _$_EventPrefGetUser implements _EventPrefGetUser {
+  const _$_EventPrefGetUser();
+
+  @override
+  String toString() {
+    return 'SignInEvent.prefGetUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_EventPrefGetUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) logIn,
+    required TResult Function() prefGetUser,
+  }) {
+    return prefGetUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email, String password)? logIn,
+    TResult Function()? prefGetUser,
+  }) {
+    return prefGetUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? logIn,
+    TResult Function()? prefGetUser,
+    required TResult orElse(),
+  }) {
+    if (prefGetUser != null) {
+      return prefGetUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EventLogIn value) logIn,
+    required TResult Function(_EventPrefGetUser value) prefGetUser,
+  }) {
+    return prefGetUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EventLogIn value)? logIn,
+    TResult Function(_EventPrefGetUser value)? prefGetUser,
+  }) {
+    return prefGetUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EventLogIn value)? logIn,
+    TResult Function(_EventPrefGetUser value)? prefGetUser,
+    required TResult orElse(),
+  }) {
+    if (prefGetUser != null) {
+      return prefGetUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EventPrefGetUser implements SignInEvent {
+  const factory _EventPrefGetUser() = _$_EventPrefGetUser;
+}
+
+/// @nodoc
 mixin _$SignInState {
   String get email => throw _privateConstructorUsedError;
+  bool get isLoggedIn => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<Failure, String>> get optionSucessOrFailure =>
@@ -255,6 +345,8 @@ abstract class $SignInStateCopyWith<$Res> {
       _$SignInStateCopyWithImpl<$Res>;
   $Res call(
       {String email,
+      bool isLoggedIn,
+      String uid,
       String password,
       bool isLoading,
       Option<Either<Failure, String>> optionSucessOrFailure});
@@ -271,6 +363,8 @@ class _$SignInStateCopyWithImpl<$Res> implements $SignInStateCopyWith<$Res> {
   @override
   $Res call({
     Object? email = freezed,
+    Object? isLoggedIn = freezed,
+    Object? uid = freezed,
     Object? password = freezed,
     Object? isLoading = freezed,
     Object? optionSucessOrFailure = freezed,
@@ -279,6 +373,14 @@ class _$SignInStateCopyWithImpl<$Res> implements $SignInStateCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoggedIn: isLoggedIn == freezed
+          ? _value.isLoggedIn
+          : isLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
       password: password == freezed
           ? _value.password
@@ -305,6 +407,8 @@ abstract class _$$_SignInStateCopyWith<$Res>
   @override
   $Res call(
       {String email,
+      bool isLoggedIn,
+      String uid,
       String password,
       bool isLoading,
       Option<Either<Failure, String>> optionSucessOrFailure});
@@ -323,6 +427,8 @@ class __$$_SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = freezed,
+    Object? isLoggedIn = freezed,
+    Object? uid = freezed,
     Object? password = freezed,
     Object? isLoading = freezed,
     Object? optionSucessOrFailure = freezed,
@@ -331,6 +437,14 @@ class __$$_SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoggedIn: isLoggedIn == freezed
+          ? _value.isLoggedIn
+          : isLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
       password: password == freezed
           ? _value.password
@@ -353,12 +467,18 @@ class __$$_SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
 class _$_SignInState implements _SignInState {
   const _$_SignInState(
       {required this.email,
+      required this.isLoggedIn,
+      required this.uid,
       required this.password,
       required this.isLoading,
       required this.optionSucessOrFailure});
 
   @override
   final String email;
+  @override
+  final bool isLoggedIn;
+  @override
+  final String uid;
   @override
   final String password;
   @override
@@ -368,7 +488,7 @@ class _$_SignInState implements _SignInState {
 
   @override
   String toString() {
-    return 'SignInState(email: $email, password: $password, isLoading: $isLoading, optionSucessOrFailure: $optionSucessOrFailure)';
+    return 'SignInState(email: $email, isLoggedIn: $isLoggedIn, uid: $uid, password: $password, isLoading: $isLoading, optionSucessOrFailure: $optionSucessOrFailure)';
   }
 
   @override
@@ -377,6 +497,9 @@ class _$_SignInState implements _SignInState {
         (other.runtimeType == runtimeType &&
             other is _$_SignInState &&
             const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.isLoggedIn, isLoggedIn) &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
@@ -387,6 +510,8 @@ class _$_SignInState implements _SignInState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(isLoggedIn),
+      const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(optionSucessOrFailure));
@@ -400,6 +525,8 @@ class _$_SignInState implements _SignInState {
 abstract class _SignInState implements SignInState {
   const factory _SignInState(
       {required final String email,
+      required final bool isLoggedIn,
+      required final String uid,
       required final String password,
       required final bool isLoading,
       required final Option<Either<Failure, String>>
@@ -407,6 +534,10 @@ abstract class _SignInState implements SignInState {
 
   @override
   String get email;
+  @override
+  bool get isLoggedIn;
+  @override
+  String get uid;
   @override
   String get password;
   @override

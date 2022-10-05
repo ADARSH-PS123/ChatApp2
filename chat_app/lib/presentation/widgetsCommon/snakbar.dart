@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 void showSnackBar(
@@ -7,13 +5,9 @@ void showSnackBar(
   required String message,
   required Duration duration,
 }) {
-
-
   final snakBar = SnackBar(
     content: Row(children: [
       Text(message),
-   
-    
     ]),
     duration: duration,
   );

@@ -1,6 +1,3 @@
-
-
-
 import 'dart:async';
 
 import 'package:chat_app/application/verifyBloc/verify_bloc.dart';
@@ -18,51 +15,55 @@ class PageVerify extends StatefulWidget {
   @override
   State<PageVerify> createState() => _PageVerifyState();
 }
- Timer ? timer1;
-class _PageVerifyState extends State<PageVerify>with WidgetsBindingObserver  {
-  
+
+Timer? timer1;
+
+class _PageVerifyState extends State<PageVerify> with WidgetsBindingObserver {
   @override
   void initState() {
-  WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     BlocProvider.of<VerifyBloc>(context).add(VerifyEvent.sendEmail());
- startTimer();
-  
-  timer1=Timer.periodic(Duration(seconds: 3), (t1){
-BlocProvider.of<VerifyBloc>(context).add(const VerifyEvent.reload());
-  });
+    startTimer();
+
+    timer1 = Timer.periodic(Duration(seconds: 3), (t1) {
+      BlocProvider.of<VerifyBloc>(context).add(const VerifyEvent.reload());
+    });
     super.initState();
   }
 
   @override
   void dispose() {
-     WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     timer1!.cancel();
     stopTimer();
     super.dispose();
   }
 
-@override
-void didChangeAppLifecycleState(AppLifecycleState state) {
-    print(state.toString()+"8888888888888888888888888888888888888888");
-    if(state==AppLifecycleState.detached){
-       BlocProvider.of<VerifyBloc>(context).add(const VerifyEvent.deleteUnverifiedEmail());
-  timer1!.cancel();
-   stopTimer();
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state.toString() + "8888888888888888888888888888888888888888");
+    if (state == AppLifecycleState.detached) {
+      BlocProvider.of<VerifyBloc>(context)
+          .add(const VerifyEvent.deleteUnverifiedEmail());
+      timer1!.cancel();
+      stopTimer();
     }
     super.didChangeAppLifecycleState(state);
   }
 
   @override
   Widget build(BuildContext context) {
-   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-
-   },);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {},
+    );
     return WillPopScope(
-      onWillPop: ()async {
-        BlocProvider.of<VerifyBloc>(context).add(const VerifyEvent.deleteUnverifiedEmail());
-  timer1!.cancel();
-   stopTimer();
-   return true;  },
+      onWillPop: () async {
+        BlocProvider.of<VerifyBloc>(context)
+            .add(const VerifyEvent.deleteUnverifiedEmail());
+        timer1!.cancel();
+        stopTimer();
+        return true;
+      },
       child: Scaffold(
         body: BlocListener<VerifyBloc, VerifyState>(
           listener: (context, state) {
@@ -76,15 +77,14 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
                           context, //if the user verified the email => show  success snakbar and navigate to log in page
                           message: success,
                           duration: Duration(seconds: 3));
-                    
                     }));
-                    if(state.isVerified){
-                      print('verified');
-                      stopTimer();
-                      timer1!.cancel();
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const AuthScreen()));
-                    }
+            if (state.isVerified) {
+              print('verified');
+              stopTimer();
+              timer1!.cancel();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const AuthScreen()));
+            }
           },
           child: SafeArea(
             child: Center(

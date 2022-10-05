@@ -1,18 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 final ValueNotifier<String> notifierTime = ValueNotifier("0:00");
 
-Timer ?timerInstance;
+Timer? timerInstance;
 
- 
-
-    startTimer(){
- 
-     int durationInSeconds = 60;
-  timerInstance=Timer.periodic(const Duration(seconds: 1), (timer) {
-
-
+startTimer() {
+  int durationInSeconds = 60;
+  timerInstance = Timer.periodic(const Duration(seconds: 1), (timer) {
     durationInSeconds = durationInSeconds - 1;
     String timeInMinutes =
         (durationInSeconds / 60).toInt().toString().length < 2
@@ -26,23 +22,15 @@ Timer ?timerInstance;
     notifierTime.value = timeInMinutes + ":" + timeInSeconds;
     print("count down timer");
     if (durationInSeconds == 0) {
-     
       timer.cancel();
     }
-   
   });
 }
-stopTimer(){
-  if(timerInstance ==null){}
-  else{ 
-    notifierTime.value="0:00";
-    timerInstance!.cancel();}
- 
-  
+
+stopTimer() {
+  if (timerInstance == null) {
+  } else {
+    notifierTime.value = "0:00";
+    timerInstance!.cancel();
+  }
 }
-
-
-
-
-
-

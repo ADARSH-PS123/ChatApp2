@@ -4,9 +4,9 @@ part of 'verify_bloc.dart';
 class VerifyState with _$VerifyState {
   const factory VerifyState({
     required bool isVerified,
-    required Option<Either<Failure,String>>optionSuccessFailure,
-  })=_VerifyState;
-   factory VerifyState.initial(){
-    return  VerifyState(isVerified: false, optionSuccessFailure: none());
-   }
+    required Option<Either<Failure, String>> optionSuccessFailure,
+  }) = _VerifyState;
+  factory VerifyState.initial() {
+    return VerifyState(isVerified: false, optionSuccessFailure: none());
+  }
 }

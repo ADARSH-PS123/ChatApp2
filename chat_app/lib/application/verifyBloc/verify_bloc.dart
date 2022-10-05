@@ -13,15 +13,15 @@ part 'verify_bloc.freezed.dart';
 class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
   final Iverify verify;
   VerifyBloc(this.verify) : super(VerifyState.initial()) {
-   on<_EventSendEmail>((event, emit) async {
+    on<_EventSendEmail>((event, emit) async {
       Either<Failure, String> result = await verify.sendEmailVerification();
 
       final outPut = result.fold((failure) {
-   return     state.copyWith(
+        return state.copyWith(
           optionSuccessFailure: Some(Left(failure)),
         );
       }, (message) {
-     return   state.copyWith(
+        return state.copyWith(
           optionSuccessFailure: Some(Right(message)),
         );
       });
@@ -29,36 +29,35 @@ class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
       emit(outPut);
     });
 
-  
-  on<_EventReloadEmail>((event, emit) async {
+    on<_EventReloadEmail>((event, emit) async {
       Either<Failure, bool> result = await verify.reload();
-     final output= result.fold((failure) {
+      final output = result.fold((failure) {
         return state.copyWith(optionSuccessFailure: Some(Left(failure)));
       }, (status) {
         if (status == true) {
+          verify.setUserInfo( profilePhoto: '',groups: []);
           return state.copyWith(
               isVerified: true,
               optionSuccessFailure:
                   const Some(Right("email has been verified please log in")));
-
-        }
-        else{
+        } else {
           return state.copyWith();
         }
       });
       emit(output);
     });
 
- on<_EventDeleteEmail>((event, emit)async{
-      Either<Failure, String> result=await verify.deleteUnverifiedEmail();
-     final output= result.fold((l) {return
-        state.copyWith(optionSuccessFailure: Some(Left(l)));}, (r){
-          return
-          state.copyWith(isVerified: false,optionSuccessFailure: Some(Right(r)));});
-          emit(output);
-    
-      
-    },);
-   
+    on<_EventDeleteEmail>(
+      (event, emit) async {
+        Either<Failure, String> result = await verify.deleteUnverifiedEmail();
+        final output = result.fold((l) {
+          return state.copyWith(optionSuccessFailure: Some(Left(l)));
+        }, (r) {
+          return state.copyWith(
+              isVerified: false, optionSuccessFailure: Some(Right(r)));
+        });
+        emit(output);
+      },
+    );
   }
 }

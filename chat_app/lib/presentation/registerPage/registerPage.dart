@@ -3,7 +3,6 @@ import 'package:chat_app/application/RegBloc/register_bloc.dart';
 import 'package:chat_app/presentation/core/colors.dart';
 import 'package:chat_app/presentation/core/spaces.dart';
 
-
 import 'package:chat_app/presentation/verifyPage/verifyPage.dart';
 
 import 'package:chat_app/presentation/widgetsCommon/buttons.dart';
@@ -29,7 +28,7 @@ class RegScreen extends StatelessWidget {
                       () => "null",
                       (either) => either.fold((l) {
                             if (l.toString().length <= 24) {
-                        return "network error";
+                              return "network error";
                             }
                             return l
                                 .toString()
