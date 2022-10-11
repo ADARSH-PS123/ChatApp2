@@ -52,21 +52,24 @@ class Verify implements Iverify {
       return const Left(Failure.clinetFailure());
     }
   }
+
   @override
   Future<Either<Failure, String>> setUserInfo(
-      {
-      required String profilePhoto,
-      required List<String> groups}) async {
-        final currentUser=FirebaseAuth.instance.currentUser;
-        final name= currentUser!.email.toString().split("@");
-     final user=   UserModel(name:name[0],profilePhoto: profilePhoto,groups: groups,userId:currentUser.uid );
+      {required String profilePhoto, required List<String> groups}) async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final name = currentUser!.email.toString().split("@");
+    final user = UserModel(
+        name: name[0],
+        profilePhoto: profilePhoto,
+        groups: groups,
+        userId: currentUser.uid, isOnline: false);
     try {
       final firebseinstace = await FirebaseFirestore.instance;
       firebseinstace
           .collection("users")
           .doc(currentUser.uid)
           .set(user.toJson());
-          print(user.toJson());
+      print(user.toJson());
       return Right("success");
     } on FirebaseException catch (e) {
       print(e.code.toString());

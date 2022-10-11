@@ -6,8 +6,6 @@ abstract class Iverify {
   Future<Either<Failure, bool>> reload();
 
   Future<Either<Failure, String>> deleteUnverifiedEmail();
-   Future<Either<Failure, String>> setUserInfo(
-      {
-      required String profilePhoto,
-      required List<String> groups});
+  Future<Either<Failure, String>> setUserInfo(
+      {required String profilePhoto, required List<String> groups});
 }

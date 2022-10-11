@@ -20,18 +20,21 @@ mixin _$MainScreenEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String uid) getUserInfo,
     required TResult Function(String name) serachUser,
+    required TResult Function(String uid) showChatLists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String uid)? getUserInfo,
     TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String uid)? getUserInfo,
     TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$MainScreenEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_EventGetUserInfo value) getUserInfo,
     required TResult Function(_EventSearchUser value) serachUser,
+    required TResult Function(_EventShowChatLists value) showChatLists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventGetUserInfo value)? getUserInfo,
     TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventGetUserInfo value)? getUserInfo,
     TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$_EventGetUserInfo implements _EventGetUserInfo {
   TResult when<TResult extends Object?>({
     required TResult Function(String uid) getUserInfo,
     required TResult Function(String name) serachUser,
+    required TResult Function(String uid) showChatLists,
   }) {
     return getUserInfo(uid);
   }
@@ -149,6 +156,7 @@ class _$_EventGetUserInfo implements _EventGetUserInfo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String uid)? getUserInfo,
     TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
   }) {
     return getUserInfo?.call(uid);
   }
@@ -158,6 +166,7 @@ class _$_EventGetUserInfo implements _EventGetUserInfo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String uid)? getUserInfo,
     TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -171,6 +180,7 @@ class _$_EventGetUserInfo implements _EventGetUserInfo {
   TResult map<TResult extends Object?>({
     required TResult Function(_EventGetUserInfo value) getUserInfo,
     required TResult Function(_EventSearchUser value) serachUser,
+    required TResult Function(_EventShowChatLists value) showChatLists,
   }) {
     return getUserInfo(this);
   }
@@ -180,6 +190,7 @@ class _$_EventGetUserInfo implements _EventGetUserInfo {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventGetUserInfo value)? getUserInfo,
     TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
   }) {
     return getUserInfo?.call(this);
   }
@@ -189,6 +200,7 @@ class _$_EventGetUserInfo implements _EventGetUserInfo {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventGetUserInfo value)? getUserInfo,
     TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -275,6 +287,7 @@ class _$_EventSearchUser implements _EventSearchUser {
   TResult when<TResult extends Object?>({
     required TResult Function(String uid) getUserInfo,
     required TResult Function(String name) serachUser,
+    required TResult Function(String uid) showChatLists,
   }) {
     return serachUser(name);
   }
@@ -284,6 +297,7 @@ class _$_EventSearchUser implements _EventSearchUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String uid)? getUserInfo,
     TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
   }) {
     return serachUser?.call(name);
   }
@@ -293,6 +307,7 @@ class _$_EventSearchUser implements _EventSearchUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String uid)? getUserInfo,
     TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
     required TResult orElse(),
   }) {
     if (serachUser != null) {
@@ -306,6 +321,7 @@ class _$_EventSearchUser implements _EventSearchUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_EventGetUserInfo value) getUserInfo,
     required TResult Function(_EventSearchUser value) serachUser,
+    required TResult Function(_EventShowChatLists value) showChatLists,
   }) {
     return serachUser(this);
   }
@@ -315,6 +331,7 @@ class _$_EventSearchUser implements _EventSearchUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventGetUserInfo value)? getUserInfo,
     TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
   }) {
     return serachUser?.call(this);
   }
@@ -324,6 +341,7 @@ class _$_EventSearchUser implements _EventSearchUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventGetUserInfo value)? getUserInfo,
     TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
     required TResult orElse(),
   }) {
     if (serachUser != null) {
@@ -344,11 +362,154 @@ abstract class _EventSearchUser implements MainScreenEvent {
 }
 
 /// @nodoc
+abstract class _$$_EventShowChatListsCopyWith<$Res> {
+  factory _$$_EventShowChatListsCopyWith(_$_EventShowChatLists value,
+          $Res Function(_$_EventShowChatLists) then) =
+      __$$_EventShowChatListsCopyWithImpl<$Res>;
+  $Res call({String uid});
+}
+
+/// @nodoc
+class __$$_EventShowChatListsCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res>
+    implements _$$_EventShowChatListsCopyWith<$Res> {
+  __$$_EventShowChatListsCopyWithImpl(
+      _$_EventShowChatLists _value, $Res Function(_$_EventShowChatLists) _then)
+      : super(_value, (v) => _then(v as _$_EventShowChatLists));
+
+  @override
+  _$_EventShowChatLists get _value => super._value as _$_EventShowChatLists;
+
+  @override
+  $Res call({
+    Object? uid = freezed,
+  }) {
+    return _then(_$_EventShowChatLists(
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EventShowChatLists implements _EventShowChatLists {
+  const _$_EventShowChatLists({required this.uid});
+
+  @override
+  final String uid;
+
+  @override
+  String toString() {
+    return 'MainScreenEvent.showChatLists(uid: $uid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EventShowChatLists &&
+            const DeepCollectionEquality().equals(other.uid, uid));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(uid));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_EventShowChatListsCopyWith<_$_EventShowChatLists> get copyWith =>
+      __$$_EventShowChatListsCopyWithImpl<_$_EventShowChatLists>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String uid) getUserInfo,
+    required TResult Function(String name) serachUser,
+    required TResult Function(String uid) showChatLists,
+  }) {
+    return showChatLists(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String uid)? getUserInfo,
+    TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
+  }) {
+    return showChatLists?.call(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String uid)? getUserInfo,
+    TResult Function(String name)? serachUser,
+    TResult Function(String uid)? showChatLists,
+    required TResult orElse(),
+  }) {
+    if (showChatLists != null) {
+      return showChatLists(uid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EventGetUserInfo value) getUserInfo,
+    required TResult Function(_EventSearchUser value) serachUser,
+    required TResult Function(_EventShowChatLists value) showChatLists,
+  }) {
+    return showChatLists(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EventGetUserInfo value)? getUserInfo,
+    TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
+  }) {
+    return showChatLists?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EventGetUserInfo value)? getUserInfo,
+    TResult Function(_EventSearchUser value)? serachUser,
+    TResult Function(_EventShowChatLists value)? showChatLists,
+    required TResult orElse(),
+  }) {
+    if (showChatLists != null) {
+      return showChatLists(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EventShowChatLists implements MainScreenEvent {
+  const factory _EventShowChatLists({required final String uid}) =
+      _$_EventShowChatLists;
+
+  String get uid;
+  @JsonKey(ignore: true)
+  _$$_EventShowChatListsCopyWith<_$_EventShowChatLists> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$MainScreenState {
   Option<Either<Failure, UserModel>> get optionUserSucessOrFailure =>
       throw _privateConstructorUsedError;
   UserModel get userModel => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isSearching => throw _privateConstructorUsedError;
   List<UserModel> get lUserModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -365,6 +526,7 @@ abstract class $MainScreenStateCopyWith<$Res> {
       {Option<Either<Failure, UserModel>> optionUserSucessOrFailure,
       UserModel userModel,
       bool isLoading,
+      bool isSearching,
       List<UserModel> lUserModel});
 }
 
@@ -382,6 +544,7 @@ class _$MainScreenStateCopyWithImpl<$Res>
     Object? optionUserSucessOrFailure = freezed,
     Object? userModel = freezed,
     Object? isLoading = freezed,
+    Object? isSearching = freezed,
     Object? lUserModel = freezed,
   }) {
     return _then(_value.copyWith(
@@ -396,6 +559,10 @@ class _$MainScreenStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSearching: isSearching == freezed
+          ? _value.isSearching
+          : isSearching // ignore: cast_nullable_to_non_nullable
               as bool,
       lUserModel: lUserModel == freezed
           ? _value.lUserModel
@@ -416,6 +583,7 @@ abstract class _$$_MainScreenStateCopyWith<$Res>
       {Option<Either<Failure, UserModel>> optionUserSucessOrFailure,
       UserModel userModel,
       bool isLoading,
+      bool isSearching,
       List<UserModel> lUserModel});
 }
 
@@ -435,6 +603,7 @@ class __$$_MainScreenStateCopyWithImpl<$Res>
     Object? optionUserSucessOrFailure = freezed,
     Object? userModel = freezed,
     Object? isLoading = freezed,
+    Object? isSearching = freezed,
     Object? lUserModel = freezed,
   }) {
     return _then(_$_MainScreenState(
@@ -449,6 +618,10 @@ class __$$_MainScreenStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSearching: isSearching == freezed
+          ? _value.isSearching
+          : isSearching // ignore: cast_nullable_to_non_nullable
               as bool,
       lUserModel: lUserModel == freezed
           ? _value._lUserModel
@@ -465,6 +638,7 @@ class _$_MainScreenState implements _MainScreenState {
       {required this.optionUserSucessOrFailure,
       required this.userModel,
       required this.isLoading,
+      required this.isSearching,
       required final List<UserModel> lUserModel})
       : _lUserModel = lUserModel;
 
@@ -474,6 +648,8 @@ class _$_MainScreenState implements _MainScreenState {
   final UserModel userModel;
   @override
   final bool isLoading;
+  @override
+  final bool isSearching;
   final List<UserModel> _lUserModel;
   @override
   List<UserModel> get lUserModel {
@@ -483,7 +659,7 @@ class _$_MainScreenState implements _MainScreenState {
 
   @override
   String toString() {
-    return 'MainScreenState(optionUserSucessOrFailure: $optionUserSucessOrFailure, userModel: $userModel, isLoading: $isLoading, lUserModel: $lUserModel)';
+    return 'MainScreenState(optionUserSucessOrFailure: $optionUserSucessOrFailure, userModel: $userModel, isLoading: $isLoading, isSearching: $isSearching, lUserModel: $lUserModel)';
   }
 
   @override
@@ -496,6 +672,8 @@ class _$_MainScreenState implements _MainScreenState {
             const DeepCollectionEquality().equals(other.userModel, userModel) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
+                .equals(other.isSearching, isSearching) &&
+            const DeepCollectionEquality()
                 .equals(other._lUserModel, _lUserModel));
   }
 
@@ -505,6 +683,7 @@ class _$_MainScreenState implements _MainScreenState {
       const DeepCollectionEquality().hash(optionUserSucessOrFailure),
       const DeepCollectionEquality().hash(userModel),
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isSearching),
       const DeepCollectionEquality().hash(_lUserModel));
 
   @JsonKey(ignore: true)
@@ -519,6 +698,7 @@ abstract class _MainScreenState implements MainScreenState {
           optionUserSucessOrFailure,
       required final UserModel userModel,
       required final bool isLoading,
+      required final bool isSearching,
       required final List<UserModel> lUserModel}) = _$_MainScreenState;
 
   @override
@@ -527,6 +707,8 @@ abstract class _MainScreenState implements MainScreenState {
   UserModel get userModel;
   @override
   bool get isLoading;
+  @override
+  bool get isSearching;
   @override
   List<UserModel> get lUserModel;
   @override

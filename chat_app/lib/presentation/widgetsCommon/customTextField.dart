@@ -16,11 +16,13 @@ class CustomTextField extends StatelessWidget {
   String? Function(String)? onchanged;
   String? errorText;
   double? height;
+  int ?maxLines;
+  void Function()? ontap;
 
   CustomTextField(
       {Key? key,
       this.controller,
-      required this.hintText,
+      required this.hintText,this.ontap,
       this.textFormKey,
       this.validator,
       this.errorText,
@@ -28,7 +30,7 @@ class CustomTextField extends StatelessWidget {
       required this.isSuffixWidget,
       this.icon,
       required this.padding,
-      this.height,
+      this.height,this.maxLines,
       required this.width})
       : super(key: key);
 
@@ -40,6 +42,7 @@ class CustomTextField extends StatelessWidget {
           width: isSuffixWidget ? (width - 40) : width,
           height: height,
           child: TextFormField(
+            maxLines: maxLines,
               controller: controller,
               style: TextStyle(color: textColor),
               onChanged: onchanged,
@@ -58,15 +61,18 @@ class CustomTextField extends StatelessWidget {
               )),
         ),
         isSuffixWidget
-            ? buttons(
-                height: 40,
-                color: Colors.grey,
-                width: 40,
-                widget: Icon(
-                  icon ?? CupertinoIcons.search,
-                  color: textColor,
-                  size: 18,
-                ))
+            ? GestureDetector(
+              onTap: ontap,
+              child: buttons(
+                  height: 40,
+                  color: Colors.grey,
+                  width: 40,
+                  widget: Icon(
+                    icon ?? CupertinoIcons.search,
+                    color: textColor,
+                    size: 18,
+                  )),
+            )
             : const SizedBox()
       ],
     );

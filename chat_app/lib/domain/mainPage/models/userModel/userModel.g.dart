@@ -12,6 +12,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       groups:
           (json['groups'] as List<dynamic>?)?.map((e) => e as String).toList(),
       userId: json['user_id'] as String,
+      isOnline: json['is_online'] as bool,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -19,4 +20,5 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'profile_photo': instance.profilePhoto,
       'user_id': instance.userId,
       'groups': instance.groups,
+      'is_online': instance.isOnline,
     };

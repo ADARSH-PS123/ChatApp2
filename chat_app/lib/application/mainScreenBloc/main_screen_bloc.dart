@@ -28,20 +28,32 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
       emit(out);
     });
     on<_EventSearchUser>((event, emit) async {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(isLoading: true,isSearching: true));
       final result = await mainRepo.searchUser(name: event.name);
       final out = result.fold(
-          (l) => state.copyWith(isLoading: false,
+          (l) => state.copyWith(
+              isLoading: false,
               optionUserSucessOrFailure:
-                 const Some(Left(Failure.FirebaseFirestore()))), (userList) {
-                 userList.forEach((element) {
-                  print(element.name.toString()+"-------------------");
-                 });
-                
-        return 
-        state.copyWith(lUserModel: userList,isLoading: false);
+                  const Some(Left(Failure.FirebaseFirestore()))), (userList) {
+        userList.forEach((element) {
+          print(element.name.toString() + "-------------------");
+        });
+
+        return state.copyWith(lUserModel: userList, isLoading: false,isSearching: event.name.isNotEmpty?true:false);
       });
       emit(out);
     });
+    on<_EventShowChatLists>((event, emit)async {
+final result=await mainRepo.showChatLists(myId: event.uid);
+final out= result.fold((l){
+  return state.copyWith(optionUserSucessOrFailure: Some(Left(l)));
+},(r){
+  
+  return state.copyWith(lUserModel: r);
+});
+emit(out);
+    });
+
+  
   }
 }

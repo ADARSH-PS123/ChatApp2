@@ -35,7 +35,7 @@ class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
         return state.copyWith(optionSuccessFailure: Some(Left(failure)));
       }, (status) {
         if (status == true) {
-          verify.setUserInfo( profilePhoto: '',groups: []);
+          verify.setUserInfo(profilePhoto: '', groups: []);
           return state.copyWith(
               isVerified: true,
               optionSuccessFailure:
