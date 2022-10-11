@@ -4,5 +4,5 @@ part of 'sign_in_bloc.dart';
 class SignInEvent with _$SignInEvent {
   const factory SignInEvent.logIn(
       {required String email, required String password}) = _EventLogIn;
-      const factory SignInEvent.prefGetUser()=_EventPrefGetUser;
+  const factory SignInEvent.prefGetUser() = _EventPrefGetUser;
 }

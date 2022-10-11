@@ -38,7 +38,6 @@ class AuthScreen extends StatelessWidget {
                   }, (r) {
                     emailController.clear();
                     passwordController.clear();
-                 
                   }));
         },
         builder: (context, state) {
@@ -101,10 +100,10 @@ class InputPage extends StatelessWidget {
                         } else if (RegExp(
                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(p0)) {
-                          print("else if");
+                        
                           return null;
                         } else {
-                          print("else block");
+                        
                           return "invalid email";
                         }
                       },

@@ -39,7 +39,6 @@ class WebLogInScreen extends StatelessWidget {
                 }, (r) {
                   emailController.clear();
                   passwordController.clear();
-                  
                 }));
       },
       builder: (context, state) {

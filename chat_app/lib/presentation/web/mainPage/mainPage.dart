@@ -16,12 +16,11 @@ class WebMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-    
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<MainScreenBloc, MainScreenState>(
       builder: (context, state) {
-         BlocProvider.of<MainScreenBloc>(context).add(MainScreenEvent.getUserInfo(uid: uid));
+        BlocProvider.of<MainScreenBloc>(context)
+            .add(MainScreenEvent.getUserInfo(uid: uid));
         return Scaffold(
           floatingActionButton: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,7 +36,8 @@ class WebMainPage extends StatelessWidget {
             children: [
               SingleChildScrollView(
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 350, minWidth: 300),
+                  constraints:
+                      const BoxConstraints(maxWidth: 350, minWidth: 300),
                   child: Padding(
                     padding: EdgeInsets.only(
                         left: size.width * .01,
@@ -51,13 +51,20 @@ class WebMainPage extends StatelessWidget {
                             CircleAvatar(
                               radius: 22.r,
                             ),
-                            const Spacer(),state.userModel.name!=null?
-                        Text(
-                          state.userModel.name.toString(),
-                          style: TextStyle(color: textColor, fontSize: 22.r),
-                        ):SizedBox(
-                          child:  const CircularProgressIndicator(strokeWidth: 2 ,),height: 15.r,width: 15.r,)
-                           
+                            const Spacer(),
+                            state.userModel.name != null
+                                ? Text(
+                                    state.userModel.name.toString(),
+                                    style: TextStyle(
+                                        color: textColor, fontSize: 22.r),
+                                  )
+                                : SizedBox(
+                                    child: const CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
+                                    height: 15.r,
+                                    width: 15.r,
+                                  )
                           ],
                         ),
                         kHeight15,
@@ -76,8 +83,8 @@ class WebMainPage extends StatelessWidget {
                         ListView(
                           controller: ScrollController(),
                           shrinkWrap: true,
-                          children:
-                              List.generate(40, (index) => const ScreenListTile()),
+                          children: List.generate(
+                              40, (index) => const ScreenListTile()),
                         )
                       ],
                     ),

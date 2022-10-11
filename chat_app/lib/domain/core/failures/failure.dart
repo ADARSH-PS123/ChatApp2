@@ -23,6 +23,6 @@ class Failure with _$Failure {
   const factory Failure.AuthFailureAnonimousAccountDisabled() =
       _AnonimousAccountDisabledFailure;
 
-      //firebase storage
-      const factory Failure.FirebaseFirestore()=_FirebaseFirestoreFailure;
+  //firebase storage
+  const factory Failure.FirebaseFirestore() = _FirebaseFirestoreFailure;
 }

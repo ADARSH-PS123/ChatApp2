@@ -1,4 +1,5 @@
 import 'package:chat_app/application/RegBloc/register_bloc.dart';
+import 'package:chat_app/application/chatRoomBloc/chat_room_bloc.dart';
 import 'package:chat_app/application/mainScreenBloc/main_screen_bloc.dart';
 import 'package:chat_app/application/signInBloc/sign_in_bloc.dart';
 import 'package:chat_app/application/verifyBloc/verify_bloc.dart';
@@ -42,13 +43,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<MainScreenBloc>()),
         BlocProvider(create: (context) => getIt<RegisterBloc>()),
         BlocProvider(create: (context) => getIt<SignInBloc>()),
         BlocProvider(create: (context) => getIt<VerifyBloc>()),
+            BlocProvider(create: (context) => getIt<ChatRoomBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -62,15 +63,25 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               home: BlocBuilder<SignInBloc, SignInState>(
                 builder: (context, state) {
-                  print(state
-                  .isLoggedIn);
-                  BlocProvider.of<SignInBloc>(context).add(const SignInEvent.prefGetUser());
+                  print(state.isLoggedIn);
+                  BlocProvider.of<SignInBloc>(context)
+                      .add(const SignInEvent.prefGetUser());
                   return SafeArea(
                       child: LayoutBuilder(builder: (context, constraints) {
-                    return Scaffold(
-                        body: constraints.constrainWidth() < 600
-                            ? (state.isLoggedIn? MainPage(uid: state.uid,) :AuthScreen())
-                            : (state.isLoggedIn?WebMainPage(uid: state.uid,): WebLogInScreen()));
+                   
+                        return Scaffold(
+                            body: constraints.constrainWidth() < 600
+                                ? (state.isLoggedIn
+                                    ? MainPage(
+                                        uid: state.uid,
+                                      )
+                                    : AuthScreen())
+                                : (state.isLoggedIn
+                                    ? WebMainPage(
+                                        uid: state.uid,
+                                      )
+                                    : WebLogInScreen()));
+                    ;
                   }));
                 },
               ),

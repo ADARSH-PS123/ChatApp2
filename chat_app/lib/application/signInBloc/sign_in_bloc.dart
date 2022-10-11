@@ -27,7 +27,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         );
       }, (String uids) {
         auth.saveId(id: uids);
-        
+
         return state.copyWith(
           optionSucessOrFailure: Some(right(uids)),
           isLoading: false,
@@ -35,13 +35,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       });
       emit(output);
     });
-    on<_EventPrefGetUser>((event, emit) async{
-      final status=await auth.getStatus();
-      final userId=await auth.getId();
-      print('++++++++++++++++++++++++++'+userId.toString());
-      final out=state.copyWith(isLoggedIn: status??false,uid: userId??"nullValue");
+    on<_EventPrefGetUser>((event, emit) async {
+      final status = await auth.getStatus();
+      final userId = await auth.getId();
+      print('++++++++++++++++++++++++++' + userId.toString());
+      final out = state.copyWith(
+          isLoggedIn: status ?? false, uid: userId ?? "nullValue");
       emit(out);
-      
     });
   }
 }
