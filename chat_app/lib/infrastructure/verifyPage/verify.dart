@@ -62,7 +62,8 @@ class Verify implements Iverify {
         name: name[0],
         profilePhoto: profilePhoto,
         groups: groups,
-        userId: currentUser.uid, isOnline: false);
+        userId: currentUser.uid,
+        isOnline: false);
     try {
       final firebseinstace = await FirebaseFirestore.instance;
       firebseinstace

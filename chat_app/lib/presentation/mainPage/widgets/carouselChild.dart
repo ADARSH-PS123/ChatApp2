@@ -5,14 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarouselChild extends StatelessWidget {
   double width;
-  CarouselChild({Key? key, required this.width}) : super(key: key);
+  final String groupName;
+  CarouselChild({Key? key, required this.width,required this.groupName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
         child: Center(
             child: Text(
-          "its me",
+          groupName,
           style: TextStyle(color: textColor),
         )),
         width: width,
@@ -20,6 +21,6 @@ class CarouselChild extends StatelessWidget {
             color: Colors.red,
             borderRadius: BorderRadius.circular(30.h),
             image: DecorationImage(
-                image: NetworkImage(images[0]), fit: BoxFit.cover)));
+                image: AssetImage('assets/users.jpg'), fit: BoxFit.cover)));
   }
 }

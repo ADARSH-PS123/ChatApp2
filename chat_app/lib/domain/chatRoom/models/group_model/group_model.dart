@@ -2,8 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'group_model.g.dart';
 
-
-
 @JsonSerializable()
 class GroupModel {
   @JsonKey(name: 'group_name')
@@ -20,7 +18,8 @@ class GroupModel {
   List members;
 
   GroupModel({
-    this.groupName,required this.members,
+    this.groupName,
+    required this.members,
     this.createdAt,
     this.createdBy,
     this.groupId,

@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<RegisterBloc>()),
         BlocProvider(create: (context) => getIt<SignInBloc>()),
         BlocProvider(create: (context) => getIt<VerifyBloc>()),
-            BlocProvider(create: (context) => getIt<ChatRoomBloc>()),
+        BlocProvider(create: (context) => getIt<ChatRoomBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -68,19 +68,18 @@ class MyApp extends StatelessWidget {
                       .add(const SignInEvent.prefGetUser());
                   return SafeArea(
                       child: LayoutBuilder(builder: (context, constraints) {
-                   
-                        return Scaffold(
-                            body: constraints.constrainWidth() < 600
-                                ? (state.isLoggedIn
-                                    ? MainPage(
-                                        uid: state.uid,
-                                      )
-                                    : AuthScreen())
-                                : (state.isLoggedIn
-                                    ? WebMainPage(
-                                        uid: state.uid,
-                                      )
-                                    : WebLogInScreen()));
+                    return Scaffold(
+                        body: constraints.constrainWidth() < 600
+                            ? (state.isLoggedIn
+                                ? MainPage(
+                                    uid: state.uid,
+                                  )
+                                : AuthScreen())
+                            : (state.isLoggedIn
+                                ? WebMainPage(
+                                    uid: state.uid,
+                                  )
+                                : WebLogInScreen()));
                     ;
                   }));
                 },

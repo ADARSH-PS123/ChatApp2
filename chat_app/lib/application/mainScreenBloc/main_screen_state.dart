@@ -4,14 +4,17 @@ part of 'main_screen_bloc.dart';
 class MainScreenState with _$MainScreenState {
   const factory MainScreenState(
       {required Option<Either<Failure, UserModel>> optionUserSucessOrFailure,
-      required UserModel userModel,
-      required bool isLoading,required bool isSearching,
-      required List<UserModel> lUserModel}) = _MainScreenState;
+      required UserModel userModel,required List<UserModel>lUserModel,
+      required bool isLoading,bool ? isSignedOut,
+    required List<GroupModel> groupModelList,
+      required List<GroupModel> lGroupModel}) = _MainScreenState;
+
+      
   factory MainScreenState.initial() {
     return MainScreenState(
-        optionUserSucessOrFailure: None(),isSearching: false,
-        userModel: UserModel(userId: '', isOnline: false),
-        isLoading: false,
+        optionUserSucessOrFailure: None(),lGroupModel: [],
+        userModel: UserModel(userId: '', isOnline: false),isSignedOut: false,
+        isLoading: false,groupModelList: [],
         lUserModel: []);
   }
 }
