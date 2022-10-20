@@ -84,7 +84,7 @@ class WebMainPage extends StatelessWidget {
                           controller: ScrollController(),
                           shrinkWrap: true,
                           children: List.generate(
-                              40, (index) => const ScreenListTile()),
+                              40, (index) =>  ScreenListTile(backgroundImage: state.lUserModel[index].profilePhoto.toString(),)),
                         )
                       ],
                     ),

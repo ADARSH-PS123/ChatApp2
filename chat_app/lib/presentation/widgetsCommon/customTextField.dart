@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
+   final String? initialValue;
   final bool isSuffixWidget;
   final IconData? icon;
   final double width;
@@ -16,13 +17,14 @@ class CustomTextField extends StatelessWidget {
   String? Function(String)? onchanged;
   String? errorText;
   double? height;
-  int ?maxLines;
+  int? maxLines;
   void Function()? ontap;
 
   CustomTextField(
-      {Key? key,
+      {Key? key,this.initialValue,
       this.controller,
-      required this.hintText,this.ontap,
+      required this.hintText,
+      this.ontap,
       this.textFormKey,
       this.validator,
       this.errorText,
@@ -30,7 +32,8 @@ class CustomTextField extends StatelessWidget {
       required this.isSuffixWidget,
       this.icon,
       required this.padding,
-      this.height,this.maxLines,
+      this.height,
+      this.maxLines,
       required this.width})
       : super(key: key);
 
@@ -42,7 +45,8 @@ class CustomTextField extends StatelessWidget {
           width: isSuffixWidget ? (width - 40) : width,
           height: height,
           child: TextFormField(
-            maxLines: maxLines,
+              autofocus: false,initialValue: initialValue,
+              maxLines: maxLines,
               controller: controller,
               style: TextStyle(color: textColor),
               onChanged: onchanged,
@@ -62,17 +66,17 @@ class CustomTextField extends StatelessWidget {
         ),
         isSuffixWidget
             ? GestureDetector(
-              onTap: ontap,
-              child: buttons(
-                  height: 40,
-                  color: Colors.grey,
-                  width: 40,
-                  widget: Icon(
-                    icon ?? CupertinoIcons.search,
-                    color: textColor,
-                    size: 18,
-                  )),
-            )
+                onTap: ontap,
+                child: buttons(
+                    height: 40,
+                    color: Colors.grey,
+                    width: 40,
+                    widget: Icon(
+                      icon ?? CupertinoIcons.search,
+                      color: textColor,
+                      size: 18,
+                    )),
+              )
             : const SizedBox()
       ],
     );

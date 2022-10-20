@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-
 part 'msgModel.g.dart';
+
 @JsonSerializable()
 class MgsModel {
   String? msg;
@@ -14,7 +14,8 @@ class MgsModel {
 
   MgsModel({this.msg, this.sendBy, this.timeStamp, this.seenBy});
 
-  factory MgsModel.fromJson(Map<String, dynamic> json) => _$MgsModelFromJson(json);
+  factory MgsModel.fromJson(Map<String, dynamic> json) =>
+      _$MgsModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MgsModelToJson(this);
 }

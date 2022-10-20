@@ -1,8 +1,12 @@
 import 'package:chat_app/domain/chatRoom/ichatRoomRepo.dart';
 import 'package:chat_app/domain/chatRoom/models/group_model/group_model.dart';
+import 'package:chat_app/domain/chatRoom/models/message/message.dart';
 import 'package:chat_app/domain/core/failures/failure.dart';
+import 'package:chat_app/domain/core/functions.dart';
+import 'package:chat_app/domain/mainPage/models/userModel/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IchatRoomRepo)
@@ -11,58 +15,207 @@ class ChatRoomRepo implements IchatRoomRepo {
   Future<Either<Failure, String>> createGroup(
       {required String groupName,
       required String myId,
-      required String memberId}) async {
-        String idCreator(String id1,String id2){
-          List<String>ls=[id1.trim(),id2.trim()];
-          ls.sort();
-          return ls[0]+ls[1];
+      String? message,
+      String? memberId,
+      List<String>? members}) async {
+    {
+      try {
+        final _firestore = FirebaseFirestore.instance;
+        //private group, one to one chat
+        final res = await _firestore
+            .collection('groups')
+            .doc(HelperFunctions.idCreator(myId, memberId!))
+            .get();
+        await _firestore
+            .collection('messages')
+            .doc(HelperFunctions.idCreator(myId, memberId))
+            .collection('msg')
+            .doc()
+            .set(Message(
+                isDeleted: false,
+                message: message,
+                timeStamp: DateTime.now().toString(),
+                sendBy: myId,
+                seenBy: []).toJson());
+        if (res.exists) {
+          await FirebaseFirestore.instance
+              .collection('groups')
+              .doc(HelperFunctions.idCreator(myId, memberId))
+              .update({'recent_msg': message});
+          print('if block');
+        } else {
+          final firebse = await _firestore
+              .collection('groups')
+              .doc(HelperFunctions.idCreator(myId, memberId));
+
+          final groupId = firebse.id;
+
+          final gModel = GroupModel(
+            groupName: groupName,
+            recentMsg: message,
+            groupId: groupId,
+            private: true,
+            members: [myId, memberId.toString().trim()],
+          );
+
+          firebse.set(gModel.toJson(), SetOptions(merge: true));
+          //adding group ids to the users collection ie ,groups:[gid]
+
+          final firebase =
+              await _firestore.collection('users').doc(myId).update({
+            'groups':
+                FieldValue.arrayUnion([groupId]) //updating user info to my db
+          });
+          await _firestore
+              .collection('users')
+              .doc(memberId.toString().trim())
+              .update({
+            'groups':
+                FieldValue.arrayUnion([groupId]) //updating user info to my db
+          });
         }
-    try {
-  
-  final res=await FirebaseFirestore.instance.collection('groups').doc(idCreator(myId, memberId)).get();
 
-if(res.exists){
-  print("existsss");
-}
-print('if block');
 //else
-      final firebse =
-          await FirebaseFirestore.instance.collection('groups').
-          doc(idCreator(myId, memberId));
 
-      final groupId = firebse.id;
-      print(groupId);
-      final gModel = GroupModel(
-        groupName: groupName,groupId: groupId,private: true,
-        members: [myId, memberId.toString().trim()],
-      );
-      
-      firebse.set(gModel.toJson(),SetOptions(merge: true));
-      //adding group ids to the users collection ie ,groups:[gid]
+        return Right("succes");
+      } catch (e) {
+        print(e.toString() + "=======create group catch ____________________");
+        return Left(Failure.FirebaseFirestore());
+      }
+    }
+  }
 
-      final firebase = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(myId)
-          .update({
-        'groups': FieldValue.arrayUnion([groupId])//updating user info to my db
-      });
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(memberId.toString().trim())
-          .update({
-        'groups': FieldValue.arrayUnion([groupId])//updating user info to my db
-      });
+  @override
+  Stream<List<Message>> readMessage({required String groupId}) async* {
+    final _firebase = FirebaseFirestore.instance;
 
-      return Right("succes");
-     
+    final res = _firebase
+        .collection('messages')
+        .doc(groupId.trim())
+        .collection('msg')
+        .orderBy('time_stamp', descending: false)
+        .snapshots();
 
-      
-    } 
-    
-    
-    catch (e) {
-      print(e.toString() + "=======create group catch ____________________");
+    final out = res.map((element) {
+      final data = element.docs.map((element) {
+        return Message.fromJson(element.data());
+      }).toList();
+
+      return data;
+    });
+
+    yield* out;
+  }
+
+  @override
+  Future<Either<Failure, GroupModel>> getGroupInfo(
+      {required String groupId}) async {
+    try {
+      final _firebase = FirebaseFirestore.instance;
+      DocumentSnapshot docSnap =
+          await _firebase.collection('groups').doc(groupId.trim()).get();
+      return Right(GroupModel.fromJson(docSnap.data() as Map<String, dynamic>));
+    } catch (e) {
+      print(e.toString() + "catch at chatroom ");
       return Left(Failure.FirebaseFirestore());
     }
   }
+
+  @override
+  Future<Either<Failure, String>> createPublicGroup({
+    required String groupName,
+    required List<String> members,
+    required String myId,
+  }) async {
+    try {
+      final _firebase = FirebaseFirestore.instance;
+      final docRef = _firebase.collection('groups').doc();
+      final docId = docRef.id.trim();
+      List<String> memberIds = members + [myId];
+      await docRef.set(GroupModel(
+        members: memberIds,
+        groupName: groupName,
+        groupId: docId,
+        private: false,
+        createdAt: DateTime.now().toString(),
+        createdBy: myId,
+      ).toJson());
+      //updating groupsList inside the user collection of each member
+      memberIds.forEach((ids) async {
+        await _firebase.collection('users').doc(ids.trim()).update({
+          'groups': FieldValue.arrayUnion([docId])
+        });
+      });
+
+      return Right(docId.trim());
+    } catch (e) {
+      print('catch block,public ,${e.toString()}');
+      return Left(Failure.FirebaseFirestore());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserModel>>> getUserList(
+      {required String groupId}) async {
+    try {
+      
+      final _firebase = FirebaseFirestore.instance;
+      final lUsers = await _firebase
+          .collection('groups')
+          .doc(groupId.trim())
+          .get()
+          .then((value) => value.data()!['members']);
+
+      List<UserModel> lUserModel = [];
+      for (int i = 0; i < lUsers.length; i++) {
+        final data = await _firebase
+            .collection('users')
+            .doc(lUsers[i].toString().trim())
+            .get();
+
+        lUserModel.add(UserModel.fromJson(data.data() as Map<String, dynamic>));
+      }
+
+      return Right(lUserModel);
+    } catch (e) {
+      print(e.toString() + "catch bloc at getUserlist ++++");
+      return Left(Failure.FirebaseFirestore());
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> sendPublicGroupMessage(
+      {required String groupId,
+      required String myId,
+      required String message})async {
+             try {
+        final _firestore = FirebaseFirestore.instance;
+        //public group, one to one chat
+    
+        await _firestore
+            .collection('messages')
+            .doc(groupId.trim())
+            .collection('msg')
+            .doc()
+            .set(Message(
+                isDeleted: false,
+                message: message,
+                timeStamp: DateTime.now().toString(),
+                sendBy: myId,
+                seenBy: []).toJson());
+       
+          await FirebaseFirestore.instance
+              .collection('groups')
+              .doc(groupId.trim())
+              .update({'recent_msg': message});
+       
+
+//else
+
+        return Right("succes");
+      } catch (e) {
+        print(e.toString() + "=======create group catch ____________________");
+        return Left(Failure.FirebaseFirestore());
+      }
+      }
 }
